@@ -170,7 +170,8 @@ class YandexTimeset(timeset.TimeSet):
         nextTime = self.nextTime()
         self.callback(self.currentPeriod())
         while True:
-            if datetime.now().time() == nextTime:
+            now = datetime.now().time()
+            if now.hour == nextTime.hour and now.minute == nextTime.minute and now.second == nextTime.second: 
                 log.info('Time reached: {}'.format(nextTime))
                 nextTime = self.nextTime()
                 period = self.period()
